@@ -107,7 +107,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (_) => const SignUpScreen()),
+                      MaterialPageRoute(builder: (_) => const SignupScreen()),
                     );
                   },
                   child: const Text("Sign Up", style: TextStyle(color: Colors.green)),
