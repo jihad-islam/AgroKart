@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../models/product.dart';
 import '../services/product_service.dart';
 import '../providers/cart_provider.dart';
+import '../widgets/review_section.dart';
 import 'cart_screen.dart';
 
 class ProductDetailScreen extends StatefulWidget {
@@ -19,6 +20,27 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
   final ProductService _productService = ProductService();
   int _quantity = 1;
   int _selectedImageIndex = 0;
+
+  final List<Map<String, dynamic>> dummyReviews = [
+    {
+      'name': 'John Doe',
+      'rating': 5,
+      'comment': 'Great product! Very fresh and good quality.',
+      'date': '2024-04-15',
+    },
+    {
+      'name': 'Jane Smith',
+      'rating': 4,
+      'comment': 'Good value for money. Will buy again.',
+      'date': '2024-04-14',
+    },
+    {
+      'name': 'Mike Johnson',
+      'rating': 5,
+      'comment': 'Excellent quality and fast delivery!',
+      'date': '2024-04-13',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -217,7 +239,18 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     product.description,
                     style: const TextStyle(fontSize: 16, color: Colors.grey),
                   ),
+                  const SizedBox(height: 24),
+                  const Text(
+                    'Reviews',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
                   const SizedBox(height: 16),
+                  ReviewSection(
+                    rating: product.rating,
+                    reviewCount: product.reviewCount,
+                    reviews: dummyReviews,
+                  ),
+                  const SizedBox(height: 24),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
